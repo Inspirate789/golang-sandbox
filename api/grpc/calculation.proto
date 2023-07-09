@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package calculation;
+
+option go_package = "github.com/Inspirate789/golang-sandbox/internal/adapters/grpc/api/calculation";
+
+message Calculation {
+  uint64 base = 1;
+  uint64 result = 2;
+}

@@ -1,0 +1,79 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sandbox API.",
+        "title": "Sandbox API",
+        "contact": {
+            "name": "API Support",
+            "email": "andreysapozhkov535@gmail.com"
+        },
+        "version": "0.1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/call": {
+            "get": {
+                "description": "call the REST API",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Control"
+                ],
+                "summary": "Call the REST API.",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Calculation input",
+                        "name": "input",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_Inspirate789_golang-sandbox_internal_models.Calculation"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/fiber.Map"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/fiber.Map"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "fiber.Map": {
+            "type": "object",
+            "additionalProperties": true
+        },
+        "github_com_Inspirate789_golang-sandbox_internal_models.Calculation": {
+            "type": "object",
+            "properties": {
+                "base": {
+                    "description": "Base calculation input\nrequired: true\nmin: 0\nexample: 1",
+                    "type": "integer"
+                },
+                "result": {
+                    "description": "Result calculation result\nrequired: true\nmin: 0\nexample: 1",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

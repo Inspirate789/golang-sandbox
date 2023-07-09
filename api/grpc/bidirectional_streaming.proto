@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package calculation;
+
+option go_package = "github.com/Inspirate789/golang-sandbox/internal/adapters/grpc/api/bidirectional_streaming";
+
+import "calculation.proto";
+
+service BidirectionalCalculator {
+  rpc Calculate(stream Calculation) returns (stream Calculation) {}
+}

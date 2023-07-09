@@ -1,0 +1,61 @@
+basePath: /api/v1
+definitions:
+  fiber.Map:
+    additionalProperties: true
+    type: object
+  github_com_Inspirate789_golang-sandbox_internal_models.Calculation:
+    properties:
+      base:
+        description: |-
+          Base calculation input
+          required: true
+          min: 0
+          example: 1
+        type: integer
+      result:
+        description: |-
+          Result calculation result
+          required: true
+          min: 0
+          example: 1
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: andreysapozhkov535@gmail.com
+    name: API Support
+  description: This is a sandbox API.
+  title: Sandbox API
+  version: 0.1.0
+paths:
+  /call:
+    get:
+      description: call the REST API
+      parameters:
+      - description: Calculation input
+        in: query
+        name: input
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_Inspirate789_golang-sandbox_internal_models.Calculation'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/fiber.Map'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/fiber.Map'
+      summary: Call the REST API.
+      tags:
+      - Control
+schemes:
+- http
+swagger: "2.0"

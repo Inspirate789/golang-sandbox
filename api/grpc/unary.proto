@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package calculation;
+
+option go_package = "github.com/Inspirate789/golang-sandbox/internal/adapters/grpc/api/unary";
+
+import "calculation.proto";
+
+service UnaryCalculator {
+  rpc Calculate(Calculation) returns (Calculation) {}
+}
