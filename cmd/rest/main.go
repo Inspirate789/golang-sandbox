@@ -6,7 +6,6 @@ import (
 	"github.com/Inspirate789/golang-sandbox/internal/adapters/grpc/client/unary"
 	"github.com/Inspirate789/golang-sandbox/internal/adapters/rest"
 	"github.com/Inspirate789/golang-sandbox/internal/models"
-
 	_ "github.com/Inspirate789/golang-sandbox/swagger"
 	swagger "github.com/arsmn/fiber-swagger/v2"
 	"github.com/gofiber/fiber/v2"

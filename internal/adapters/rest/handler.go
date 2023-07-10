@@ -20,8 +20,8 @@ func newDelivery(callback models.CalculationCallback, logOutput io.Writer) *deli
 }
 
 func SetupDelivery(api fiber.Router, logOutput io.Writer, callback models.CalculationCallback) {
-	handler := newDelivery(callback, logOutput)
-	api.Get("/call", handler.call)
+	d := newDelivery(callback, logOutput)
+	api.Get("/call", d.call)
 }
 
 // call godoc
