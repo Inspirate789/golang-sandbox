@@ -33,7 +33,7 @@ func NewServer(address string, callback models.CalculationCallback) (interfaces.
 	}
 
 	s.grpcServer = grpc.NewServer()
-	unary.RegisterUnaryCalculatorServer(s.grpcServer, &server{})
+	unary.RegisterUnaryCalculatorServer(s.grpcServer, &s)
 
 	return &s, nil
 }
@@ -58,12 +58,7 @@ func (s *server) Calculate(_ context.Context, request *calculation.Calculation) 
 }
 
 func (s *server) Close() error {
-	err := s.listener.Close()
-	if err != nil {
-		return err
-	}
-
-	s.grpcServer.GracefulStop()
+	s.grpcServer.Stop()
 
 	return nil
 }
