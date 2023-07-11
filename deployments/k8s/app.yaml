@@ -1,0 +1,44 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#    name: Title
+#    labels:
+#        app: Title
+#spec:
+#    replicas: 1
+#    selector:
+#        matchLabels:
+#            app: Title
+#    template:
+#        metadata:
+#            name: Title
+#            labels:
+#                app: Title
+#        spec:
+#            containers:
+#                -   name: Title
+#                    image: Image
+#                    imagePullPolicy: IfNotPresent
+#            restartPolicy: Always
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: nginx-hello
+    labels:
+        app: nginx-hello
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: nginx-hello
+    template:
+        metadata:
+            labels:
+                app: nginx-hello
+        spec:
+            containers:
+                -   name: nginx-hello
+                    image: nginxdemos/hello
+                    ports:
+                        - containerPort: 80
