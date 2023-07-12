@@ -81,13 +81,23 @@ func main() {
 	mainLogger := log.New(os.Stdout, "Main: ", log.LstdFlags)
 
 	uc := unary.NewClient()
-	err := uc.Open("localhost:5300")
+	host, exist := os.LookupEnv("GRPC_HOST_1")
+	if !exist {
+		host = "localhost"
+	}
+	mainLogger.Println(host)
+	err := uc.Open(fmt.Sprintf("%s:5300", host))
 	if err != nil {
 		mainLogger.Fatal(err)
 	}
 
 	bc := bidirectional_streaming.NewClient()
-	err = bc.Open("localhost:5301")
+	host, exist = os.LookupEnv("GRPC_HOST_2")
+	if !exist {
+		host = "localhost"
+	}
+	mainLogger.Println(host)
+	err = bc.Open(fmt.Sprintf("%s:5301", host))
 	if err != nil {
 		mainLogger.Fatal(err)
 	}

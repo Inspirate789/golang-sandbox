@@ -10,8 +10,9 @@ COPY go.sum ./
 RUN go mod download
 
 # Copy source code
-COPY ./cmd/grpc/unary/main.go ./
+COPY ./cmd/rest/main.go ./
 COPY ./internal ./internal
+COPY ./swagger ./swagger
 
 # Build the binary
 RUN go build -o /backend
@@ -22,8 +23,12 @@ FROM alpine:3.17
 
 # Copy our static executable
 COPY --from=build /backend /backend
+COPY --from=build /app/swagger ./swagger
 
-EXPOSE 5300
+ENV GRPC_HOST_1=grpc-1
+ENV GRPC_HOST_2=grpc-2
+
+EXPOSE 8080
 # USER nonroot:nonroot
 
 # Run the binary

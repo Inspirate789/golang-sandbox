@@ -10,8 +10,8 @@ COPY go.sum ./
 RUN go mod download
 
 # Copy source code
-COPY ./cmd/grpc/unary/main.go ./
-COPY ./internal ./internal
+COPY ./cmd/websocket/main.go ./
+COPY ./internal/adapters/websocket ./internal/adapters/websocket
 
 # Build the binary
 RUN go build -o /backend
@@ -22,8 +22,9 @@ FROM alpine:3.17
 
 # Copy our static executable
 COPY --from=build /backend /backend
+COPY ./internal/adapters/websocket/client/logger ./internal/adapters/websocket/client/logger
 
-EXPOSE 5300
+EXPOSE 8081
 # USER nonroot:nonroot
 
 # Run the binary

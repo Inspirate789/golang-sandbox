@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: grpc-unary
+    labels:
+        app: grpc-unary
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: grpc-unary
+    template:
+        metadata:
+            labels:
+                app: grpc-unary
+        spec:
+            containers:
+                -   name: grpc-unary
+                    image: inspirate789/test-grpc-unary:0.1.0
+                    ports:
+                        - containerPort: 5300
+            restartPolicy: Always

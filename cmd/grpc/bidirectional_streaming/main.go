@@ -30,7 +30,7 @@ func teardownServer(mainLogger *log.Logger, server interfaces.Server) {
 func main() {
 	mainLogger := log.New(os.Stdout, "Main: ", log.LstdFlags)
 
-	server, err := bidirectional_streaming.NewServer("localhost:5301", models.DefaultCalculation)
+	server, err := bidirectional_streaming.NewServer(":5301", models.DefaultCalculation)
 	if err != nil {
 		mainLogger.Fatal(err)
 	}

@@ -10,7 +10,7 @@ COPY go.sum ./
 RUN go mod download
 
 # Copy source code
-COPY ./cmd/grpc/unary/main.go ./
+COPY ./cmd/grpc/bidirectional_streaming/main.go ./
 COPY ./internal ./internal
 
 # Build the binary
@@ -23,7 +23,7 @@ FROM alpine:3.17
 # Copy our static executable
 COPY --from=build /backend /backend
 
-EXPOSE 5300
+EXPOSE 5301
 # USER nonroot:nonroot
 
 # Run the binary

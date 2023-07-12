@@ -30,7 +30,7 @@ func teardownServer(mainLogger *log.Logger, server interfaces.Server) {
 func main() {
 	mainLogger := log.New(os.Stdout, "Main: ", log.LstdFlags)
 
-	server, err := unary.NewServer("localhost:5300", models.DefaultCalculation)
+	server, err := unary.NewServer(":5300", models.DefaultCalculation)
 	if err != nil {
 		mainLogger.Fatal(err)
 	}
