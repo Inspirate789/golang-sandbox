@@ -56,12 +56,12 @@ func main() {
 	app := setupWebApp(os.Stdout)
 
 	go func() {
-		err := app.Listen(":8081") // TODO: add TLS config
+		err := app.Listen(":30081") // TODO: add TLS config
 		if err != nil {
 			mainLogger.Fatal(err)
 		}
 	}()
-	mainLogger.Println("Server started at port 8081")
+	mainLogger.Println("Server started at port 30081")
 
 	teardownWebApp(mainLogger, app)
 }

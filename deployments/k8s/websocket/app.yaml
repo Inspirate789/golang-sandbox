@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: grpc-unary
+    name: websocket
     labels:
-        app: grpc-unary
+        app: websocket
 spec:
     replicas: 1
     selector:
         matchLabels:
-            app: grpc-unary
+            app: websocket
     template:
         metadata:
             labels:
-                app: grpc-unary
+                app: websocket
         spec:
             containers:
-                -   name: grpc-unary
-                    image: inspirate789/test-grpc-unary:0.1.0
+                -   name: websocket
+                    image: inspirate789/test-websocket:0.1.0
                     ports:
-                        - containerPort: 5300
+                        - containerPort: 8081
             restartPolicy: Always

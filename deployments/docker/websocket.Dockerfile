@@ -24,7 +24,7 @@ FROM alpine:3.17
 COPY --from=build /backend /backend
 COPY ./internal/adapters/websocket/client/logger ./internal/adapters/websocket/client/logger
 
-EXPOSE 8081
+EXPOSE 30081
 # USER nonroot:nonroot
 
 # Run the binary

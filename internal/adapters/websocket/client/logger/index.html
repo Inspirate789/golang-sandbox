@@ -11,7 +11,7 @@
 <h1>{{ .Title }}</h1>
 
 <script>
-    let socket = new WebSocket("ws://127.0.0.1:8081/api/v1/ws/12345");
+    let socket = new WebSocket("ws://localhost:30081/api/v1/ws/12345");
     console.log("Attempting Connection...");
 
     socket.onopen = () => {
